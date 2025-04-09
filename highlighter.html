@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sequence Highlighter</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; margin: 0; }
+        .container { display: flex; flex: 1; padding: 10px; gap: 10px; overflow: hidden; /* Prevent layout issues */ }
+        .editor-pane, .display-pane { flex: 1; display: flex; flex-direction: column; overflow: hidden; } /* Make panes flexible */
+        textarea, #highlightDisplay {
+            width: 100%;
+            height: 100%; /* Fill available space */
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 14px; /* Consistent font size */
+            line-height: 1.4;
+            padding: 8px;
+            border: 1px solid #ccc;
+            white-space: pre; /* Preserve whitespace like textarea */
+            overflow: auto; /* Allow scrolling */
+            word-wrap: break-word; /* Allow wrapping long lines */
+            resize: none; /* Disable textarea resize handle if desired */
+        }
+         #highlightDisplay {
+             background-color: #f8f8f8;
+             white-space: pre-wrap; /* Allows wrapping */
+         }
+        .controls { padding: 10px; border-top: 1px solid #eee; display: flex; align-items: center; gap: 15px;}
+        #legend { margin-top: 5px; max-height: 150px; overflow-y: auto;}
+        .legend-item { display: flex; align-items: center; margin-bottom: 5px; min-height: 22px; }
+        .legend-color { width: 20px; height: 20px; margin-right: 10px; border: 1px solid #555; box-sizing: border-box; flex-shrink: 0; }
+        .legend-text { font-family: monospace; font-size: 0.9em; }
+
+        /* Highlight Styles */
+        .temp-highlight { background-color: yellow; }
+
+        .perm-highlight-0 { background-color: #FFADAD; }
+        .perm-highlight-1 { background-color: #FFD6A5; }
+        .perm-highlight-2 { background-color: #FDFFB6; }
+        .perm-highlight-3 { background-color: #CAFFBF; }
+        .perm-highlight-4 { background-color: #9BF6FF; }
+        .perm-highlight-5 { background-color: #A0C4FF; }
+        .perm-highlight-6 { background-color: #BDB2FF; }
+        .perm-highlight-7 { background-color: #FFC6FF; }
+        /* Add more permanent colors */
+
+        .revcomp-match {
+            outline: 1.5px solid black;
+            outline-offset: -1.5px;
+        }
+         #colorButton:disabled {
+             opacity: 0.5;
+             cursor: not-allowed;
+         }
+
+    </style>
+</head>
+<body>
+    <p>Vibe-coded by Gemini, double check it!</p>
+    <div class="container">
+        <div class="editor-pane">
+            <label for="textInput">Paste or type text here:</label>
+            <textarea id="textInput"></textarea>
+        </div>
+         <div class="display-pane">
+             <label>Highlighted view:</label>
+             <div id="highlightDisplay" aria-live="polite"></div>
+         </div>
+    </div>
+
+    <div class="controls">
+         <button id="colorButton" disabled>Color Selected Matches</button>
+         <div>
+             <strong>Legend:</strong>
+             <div id="legend"></div>
+         </div>
+    </div>
+
+    <script src="highlighter.js"></script>
+
+</body>
+</html>

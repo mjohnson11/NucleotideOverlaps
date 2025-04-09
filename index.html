@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repeated Substring Finder</title>
+    <style>
+        body { font-family: sans-serif; }
+        #inputSequence { width: 90%; height: 150px; font-family: monospace; }
+        #highlightedOutput {
+            border: 1px solid #ccc;
+            padding: 10px;
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+            word-wrap: break-word; /* Break long words/sequences */
+            font-family: monospace;
+            margin-top: 15px;
+            background-color: #f8f8f8;
+        }
+        #legend { margin-top: 15px; }
+        .legend-item { display: flex; align-items: center; margin-bottom: 5px; }
+        .legend-color { width: 20px; height: 20px; margin-right: 10px; border: 1px solid #555; }
+        .legend-text { font-family: monospace; font-size: 0.9em; }
+
+        /* Define highlight colors - add more as needed */
+        .repeat-highlight-0 { background-color: #FFADAD; /* Light Red */ }
+        .repeat-highlight-1 { background-color: #FFD6A5; /* Light Orange */ }
+        .repeat-highlight-2 { background-color: #FDFFB6; /* Light Yellow */ }
+        .repeat-highlight-3 { background-color: #CAFFBF; /* Light Green */ }
+        .repeat-highlight-4 { background-color: #9BF6FF; /* Light Cyan */ }
+        .repeat-highlight-5 { background-color: #A0C4FF; /* Light Blue */ }
+        .repeat-highlight-6 { background-color: #BDB2FF; /* Light Purple */ }
+        .repeat-highlight-7 { background-color: #FFC6FF; /* Light Pink */ }
+        .repeat-highlight-8 { background-color: #ffffcc; }
+        .repeat-highlight-9 { background-color: #ccffcc; }
+        /* Add more classes if you expect more unique repeats */
+        /* Add this rule */
+        .revcomp-match {
+          /* Use outline instead of border to avoid affecting layout */
+          outline: 1.5px dashed black;
+          outline-offset: -1.5px; /* Draw outline inside the element */
+          /* Optional: slightly adjust padding if outline feels too close */
+          /* padding: 0 1px; */
+        }
+
+        /* Adjust legend item display if needed for the new border entry */
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            min-height: 22px; /* Ensure consistent height */
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border: 1px solid #555;
+            box-sizing: border-box; /* Include border in size */
+            flex-shrink: 0; /* Prevent color box from shrinking */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find Repeated Nucleotide Substrings</h1>
+    <p>Vibe-coded by Gemini, double check it!</p>
+
+    <label for="inputSequence">Enter sequence data:</label><br>
+    <textarea id="inputSequence">
+    input text with DNA sequences here
+    </textarea><br>
+
+    <label for="minLength">Minimum repeat length:</label>
+    <input type="number" id="minLength" value="10" min="1"><br><br>
+
+    <button id="analyzeButton">Analyze and Highlight</button>
+
+    <h2>Highlighted Text:</h2>
+    <div id="highlightedOutput">Output will appear here...</div>
+
+    <h2>Legend:</h2>
+    <div id="legend">Legend will appear here...</div>
+
+    <script src="repeats.js"></script> <!-- We'll put the JS in this file -->
+
+</body>
+</html>
